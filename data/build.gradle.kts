@@ -1,7 +1,7 @@
 plugins {
     id ("com.android.library")
     alias(libs.plugins.kotlin.android)
-    id("com.google.dagger.hilt.android")
+    id("dagger.hilt.android.plugin")
     id("kotlin-kapt")
 }
 
@@ -33,18 +33,16 @@ android {
 }
 
 // Allow references to generated code
-kapt {
-    correctErrorTypes = true
-}
 
 dependencies {
 
     implementation(project(":domain"))
 
     //Hilt
-    implementation (libs.hilt.android)
-    implementation (libs.androidx.core.ktx)
-    kapt (libs.hilt.android.compiler.v2461)
+    val hiltVersion by project.extra("2.52") // Define la versión de Hilt, ajusta según sea necesario
+
+    implementation("com.google.dagger:hilt-android:$hiltVersion")
+    kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
 
     // Retrofit
     implementation(libs.retrofit)
