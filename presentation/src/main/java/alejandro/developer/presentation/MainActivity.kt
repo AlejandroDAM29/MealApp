@@ -1,5 +1,7 @@
 package alejandro.developer.presentation
 
+import alejandro.developer.domain.model.MealModel
+import alejandro.developer.domain.usecase.GetMealsByNameUseCase
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -12,16 +14,37 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import alejandro.developer.presentation.ui.theme.MealAppTheme
+import alejandro.developer.presentation.ui.theme.screen.mainmenu.PruebaViewModel
 import android.util.Log
+import androidx.activity.result.launch
+import androidx.activity.viewModels
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.ui.graphics.Color
+import androidx.lifecycle.lifecycleScope
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-
-class MainActivity : ComponentActivity() {
+@AndroidEntryPoint
+class MainActivity: ComponentActivity() {
+    private val viewModel: PruebaViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.i("test-200","hola")
+        lifecycleScope.launch {
+            viewModel.meals.collect { meals ->
+                if (meals.isNotEmpty())
+                    Log.d("MainActivity", "Salsita: "+meals[0].area)
+            }
+        }
+
+        /*getMealsByNameUseCase(GetMealsByNameUseCase.Parameters.forGetMealsByNameUseCase("PE"))
+            .collect { meals ->
+                prueba = meals
+                Log.d("test-300", "Meals: $prueba")
+            }*/
+
         enableEdgeToEdge()
         setContent {
             MealAppTheme {
@@ -38,7 +61,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Box(Modifier.fillMaxSize().background(Color.Blue)){
+    Box(Modifier.fillMaxSize().background(Color.Blue).clickable { Log.i("test-200", "adios") }){
         Text(
             text = "Hello $name!",
             color = Color.White,
@@ -47,10 +70,11 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     }
 }
 
+/*
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     MealAppTheme {
         Greeting("Android")
     }
-}
+}*/
