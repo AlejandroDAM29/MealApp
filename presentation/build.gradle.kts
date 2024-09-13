@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "alejandro.developer.presentation"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 24

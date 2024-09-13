@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "alejandro.developer.domain"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
                 minSdk = 24
@@ -41,9 +41,9 @@ kapt {
 dependencies {
 
     //Hilt
-    implementation ("com.google.dagger:hilt-android:2.46.1")
-    implementation ("androidx.core:core-ktx:+")
-    kapt ("com.google.dagger:hilt-android-compiler:2.46.1")
+    implementation (libs.hilt.android)
+    implementation (libs.androidx.core.ktx)
+    kapt (libs.hilt.android.compiler.v2461)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

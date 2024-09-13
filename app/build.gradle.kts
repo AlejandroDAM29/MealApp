@@ -58,9 +58,9 @@ kapt {
 
 dependencies {
     //Hilt
-    implementation ("com.google.dagger:hilt-android:2.46.1")
-    implementation ("androidx.core:core-ktx:+")
-    kapt ("com.google.dagger:hilt-android-compiler:2.46.1")
+    implementation (libs.hilt.android)
+    implementation (libs.androidx.core.ktx)
+    kapt (libs.hilt.android.compiler.v2461)
 
     //Inter-module dependencies
     implementation(project(":data"))
