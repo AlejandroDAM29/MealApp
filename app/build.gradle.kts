@@ -5,6 +5,15 @@ plugins {
     id("kotlin-kapt")
 }
 
+/*sonar {
+    properties {
+        property("sonar.projectKey", "alejandro-developer_solutions")
+        property("sonar.organization", "alejandro-developer")
+        property("sonar.host.url", "https://sonarcloud.io")
+        property("sonar.login", "your-sonarcloud-token") // Añade tu token de SonarCloud aquí
+    }
+}*/
+
 android {
     namespace = "alejandro.developer.mealapp"
     compileSdk = 35
@@ -45,6 +54,7 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
     }
+
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
