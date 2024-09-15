@@ -1,6 +1,6 @@
 package alejandro.developer.data.di
 
-import alejandro.developer.data.remote.service.MealService
+import alejandro.developer.data.remote.service.RecipeService
 import android.content.Context
 import dagger.Module
 import dagger.Provides
@@ -20,15 +20,15 @@ class RemoteModule {
         @Singleton
         fun provideRetrofit(): Retrofit {
             return Retrofit.Builder()
-                .baseUrl("https://www.themealdb.com/api/json/v1/1/")
+                .baseUrl("https://www.alejandroexpdeveloper.com/api_meal_app/endpoints/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
         }
 
         @Provides
         @Singleton
-        fun provideMealService(retrofit: Retrofit) =
-            retrofit.create(MealService::class.java)
+        fun provideRecipeService(retrofit: Retrofit) =
+            retrofit.create(RecipeService::class.java)
 
 
 }
