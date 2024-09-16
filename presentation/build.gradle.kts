@@ -55,13 +55,14 @@ dependencies {
     val hiltVersion by project.extra("2.52") // Define la versión de Hilt, ajusta según sea necesario
 
     implementation("com.google.dagger:hilt-android:$hiltVersion")
+    implementation(libs.androidx.palette.ktx)
     kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
 
     // (Opcional) Si estás utilizando coroutines en Android, agrega también esta dependencia:
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
-
+    implementation(libs.coil.compose)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
