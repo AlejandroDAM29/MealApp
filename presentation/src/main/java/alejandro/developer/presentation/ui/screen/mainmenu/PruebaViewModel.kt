@@ -1,4 +1,4 @@
-package alejandro.developer.presentation.ui.theme.screen.mainmenu
+package alejandro.developer.presentation.ui.screen.mainmenu
 
 import alejandro.developer.domain.model.RecipeModel
 import alejandro.developer.domain.usecase.GetAllRecipes

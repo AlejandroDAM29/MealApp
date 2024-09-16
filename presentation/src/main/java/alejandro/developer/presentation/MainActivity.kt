@@ -1,8 +1,9 @@
 package alejandro.developer.presentation
 
 import alejandro.developer.domain.model.RecipeModel
+import alejandro.developer.presentation.ui.component.ElevatedMenuButton
 import alejandro.developer.presentation.ui.theme.MealAppTheme
-import alejandro.developer.presentation.ui.theme.screen.mainmenu.PruebaViewModel
+import alejandro.developer.presentation.ui.screen.mainmenu.PruebaViewModel
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -28,9 +29,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.lifecycleScope
 import coil.compose.AsyncImage
@@ -82,6 +88,7 @@ fun Greeting(viewModel: PruebaViewModel, modifier: Modifier = Modifier) {
 
 @Composable
 fun RecipeItem(recipe: RecipeModel) {
+    var isSelected by remember { mutableStateOf(false) }
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -124,9 +131,20 @@ fun RecipeItem(recipe: RecipeModel) {
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(
                         text = recipe.recipe,
+                        fontFamily = FontFamily(Font(R.font.playpensans_variablefont_wght)),
                         style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onBackground
+                        color = MaterialTheme.colorScheme.onBackground,
                     )
+                    var selectedIndex by remember { mutableStateOf(0) }
+                    ElevatedMenuButton("Menu",
+                        { selectedIndex = 0 },
+                        isButtonSelected = selectedIndex == 0)
+                    ElevatedMenuButton("Menu",
+                        { selectedIndex = 1 },
+                        isButtonSelected = selectedIndex == 1)
+                    ElevatedMenuButton("Menu",
+                        { selectedIndex = 2 },
+                        isButtonSelected = selectedIndex == 2)
                 }
             }
         }
