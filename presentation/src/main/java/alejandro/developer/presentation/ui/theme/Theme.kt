@@ -52,7 +52,8 @@ fun MealAppTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = Typographies,
+        shapes = Shapes,
         content = content
     )
 }
