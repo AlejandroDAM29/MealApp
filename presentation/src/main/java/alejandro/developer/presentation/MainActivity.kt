@@ -2,8 +2,11 @@ package alejandro.developer.presentation
 
 import alejandro.developer.domain.model.RecipeModel
 import alejandro.developer.presentation.ui.component.ElevatedMenuButton
+import alejandro.developer.presentation.ui.pruebascurso.AdvanceSlider
+import alejandro.developer.presentation.ui.pruebascurso.MiNavegacion
 import alejandro.developer.presentation.ui.pruebascurso.MyColumnColours
 import alejandro.developer.presentation.ui.pruebascurso.MyRadioButtonListParameter
+import alejandro.developer.presentation.ui.pruebascurso.MyRangeSlider
 import alejandro.developer.presentation.ui.pruebascurso.MySuperConstraintLayout
 import alejandro.developer.presentation.ui.pruebascurso.PruebaHosting
 import alejandro.developer.presentation.ui.theme.MealAppTheme
@@ -49,6 +52,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -68,13 +72,15 @@ class MainActivity: ComponentActivity() {
 
         enableEdgeToEdge()
         setContent {
+            //Controler para ejercicio
+            val navigationController = rememberNavController()
             MealAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     /*MyFoodList(
                         viewModel = viewModel,
                         modifier = Modifier.padding(innerPadding)
                     )*/
-                    MyRadioButtonListParameter(Modifier.padding(innerPadding))
+                    MiNavegacion(navigationController)
                 }
             }
         }
